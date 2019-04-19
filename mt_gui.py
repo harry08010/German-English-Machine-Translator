@@ -10,7 +10,7 @@ from googletrans import Translator
 import pickle
 import numpy
 import keras
-from attention_decoder import AttentionDecoder
+from AttentionMechanism import AttentionL
 
 
 # encode and pad sequence
@@ -57,6 +57,7 @@ def output():
     translator = Translator()
     google_translation_result = translator.translate(source_sentence, src='de', dest='en')
     model = load_model('bi_model.h5') # load model
+    # model = load_model('attention_model.h5', custom_objects={'AttentionL':AttentionL})
     with open('eng_tokenizer.pickle', 'rb') as handle: # load tokenizer
         eng_tokenizer = pickle.load(handle)
 
